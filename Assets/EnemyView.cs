@@ -30,19 +30,19 @@ public class EnemyView : MonoBehaviour
 
             if (hit.transform == PlayerContainer.Player.transform)
             {
-                Debug.Log("I See Player");
+                //Debug.Log("I See Player");
                 _seePlayer = true;
                 PlayerLastPosition = PlayerContainer.Player.transform.position;
             }
             else
             {
-                Debug.Log("I See Nothing");
+                //Debug.Log("I See Nothing");
                 _seePlayer = false;
             }
         }
         else
         {
-            Debug.Log("I See Nothing");
+            //Debug.Log("I See Nothing");
             _seePlayer = false;
         }
 
