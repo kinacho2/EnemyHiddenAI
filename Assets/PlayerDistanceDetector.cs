@@ -21,7 +21,7 @@ public class PlayerDistanceDetector : MonoBehaviour
         Physics.Raycast(transform.position, playerDir.normalized, out hit, MinDistance);
         if (hit.transform && hit.transform != PlayerContainer.Player.transform)
             aux = false;
-        _playerIsNear = aux;
+        _playerIsNear = aux || (Vector3.Distance(transform.position, PlayerContainer.Player.transform.position) <= MinDistance/2f);
         if (_playerIsNear)
         {
             _PlayerLastPosition = PlayerContainer.Player.transform.position;
