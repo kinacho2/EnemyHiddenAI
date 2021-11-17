@@ -15,6 +15,6 @@ public abstract class EnemyStateBase : MonoBehaviour
 
     public abstract void OnExit();
 
-    public abstract void Update(float deltaTime);
+    public abstract void CustomUpdate(float deltaTime);
 
 }

@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
-    [SerializeField] PlayerDistanceDetector PlayerDistanceDetector;
-    [SerializeField] EnemyView EnemyView;
+    [SerializeField] EnemyPerception _EnemyPerception;
 
-    [SerializeField] NavMeshDistanceChecker NavMeshDistanceChecker;
-    
+    [SerializeField] EnemyStateBase Current;
 
+
+    public EnemyPerception Perception => _EnemyPerception;
     //INPUTS
     //1) Player distance (check) DONE
     //2) Field of view DONE
@@ -24,5 +24,24 @@ public class EnemyAI : MonoBehaviour
     //   2.1) find best path
     //   2.2) run to intermediate point
     //   2.3) run to end point
+
+    public void SetState(EnemyStateBase state)
+    {
+        if(state!=null && state != Current)
+        {
+            Current.OnExit();
+            Current = state;
+            Current.OnEnter();
+        }
+    }
+
+    private void Update()
+    {
+        //transform.Rotate(new Vector3(0, 45 * Time.deltaTime, 0), Space.Self);
+
+        if (Current)
+            Current.CustomUpdate(Time.deltaTime);
+
+    }
 
 }

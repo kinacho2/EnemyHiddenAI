@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class EnemyView : MonoBehaviour
 {
-    [SerializeField] float FieldOfView = 60;
-    [SerializeField] float ViewDistance = 5;
+    [SerializeField] float _fieldOfView = 60;
+    [SerializeField] float _viewDistance = 5;
     [SerializeField] PlayerContainer PlayerContainer;
     [SerializeField] bool _seePlayer;
 
     public Vector3 PlayerLastPosition { get; protected set; }
-
+    public float ViewDistance => _viewDistance;
+    public float FieldOfView => _fieldOfView;
     
     public bool SeePlayer => _seePlayer;
 
@@ -21,28 +22,25 @@ public class EnemyView : MonoBehaviour
 
         Vector3 dirToPlayer = (PlayerContainer.Player.transform.position - transform.position);
 
-        if(dirToPlayer.magnitude < ViewDistance && Vector3.Dot(forward, dirToPlayer.normalized) > Mathf.Cos(FieldOfView/2f*Mathf.Deg2Rad))
+        if(dirToPlayer.magnitude < _viewDistance && Vector3.Dot(forward, dirToPlayer.normalized) > Mathf.Cos(_fieldOfView/2f*Mathf.Deg2Rad))
         {
             
             RaycastHit hit;
             
-            Physics.Raycast(transform.position, dirToPlayer, out hit, ViewDistance);
+            Physics.Raycast(transform.position, dirToPlayer, out hit, _viewDistance);
 
             if (hit.transform == PlayerContainer.Player.transform)
             {
-                Debug.Log("I See Player");
                 _seePlayer = true;
                 PlayerLastPosition = PlayerContainer.Player.transform.position;
             }
             else
             {
-                Debug.Log("I See Nothing");
                 _seePlayer = false;
             }
         }
         else
         {
-            Debug.Log("I See Nothing");
             _seePlayer = false;
         }
 
@@ -56,25 +54,25 @@ public class EnemyView : MonoBehaviour
 
         Vector3 dir = transform.forward;
         //Gizmos.DrawFrustum(transform.position, FieldOfView, ViewDistance, .01f, 1);
-        Gizmos.DrawLine(transform.position, transform.position + dir * ViewDistance);
+        Gizmos.DrawLine(transform.position, transform.position + dir * _viewDistance);
 
         Gizmos.color = Color.red;
 
-        float angle = FieldOfView / 2f * Mathf.Deg2Rad;
+        float angle = _fieldOfView / 2f * Mathf.Deg2Rad;
 
         Vector3 dir2 = new Vector3(
-            dir.x * Mathf.Cos(angle) + dir.z * Mathf.Sin(angle), 
-            dir.y, 
+            dir.x * Mathf.Cos(angle) - dir.z * Mathf.Sin(angle), 
+            0, 
             dir.z * Mathf.Cos(angle) + dir.x * Mathf.Sin(angle));
-
-        Gizmos.DrawLine(transform.position, transform.position + dir2 * ViewDistance);
+        dir2.Normalize();
+        Gizmos.DrawLine(transform.position, transform.position + dir2 * _viewDistance);
 
         Vector3 dir3 = new Vector3(
-            dir.x * Mathf.Cos(-angle) + dir.z * Mathf.Sin(-angle),
-            dir.y,
+            dir.x * Mathf.Cos(-angle) - dir.z * Mathf.Sin(-angle),
+            0,
             dir.z * Mathf.Cos(-angle) + dir.x * Mathf.Sin(-angle));
-
-        Gizmos.DrawLine(transform.position, transform.position + dir3 * ViewDistance);
+        dir3.Normalize();
+        Gizmos.DrawLine(transform.position, transform.position + dir3 * _viewDistance);
 
         //DRAW PLAYER LAST POSITION
 
