@@ -19,12 +19,13 @@ public class EnemyAI : MonoBehaviour
 {
     [SerializeField] EnemyPerception _EnemyPerception;
     [SerializeField] NavMeshController _Controller;
+    [SerializeField] EnemyParameters _EnemyParameters;
 
     [SerializeField] EnemyStateBase CurrentState;
 
-
     public EnemyPerception Perception => _EnemyPerception;
     public NavMeshController Controller => _Controller;
+    public EnemyParameters EnemyParameters => _EnemyParameters;
 
 
     public void SetState(EnemyStateBase state)

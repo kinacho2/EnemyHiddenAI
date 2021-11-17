@@ -7,7 +7,6 @@ public class DecideEscape : EnemyStateBase
 
     [SerializeField] EnemyStateBase FindHiddenPlaces;
     [SerializeField] EnemyStateBase RunOppositeDirection;
-    [SerializeField] float maxDot = .4f;
     public override void CustomUpdate(float deltaTime)
     {
         
@@ -17,7 +16,7 @@ public class DecideEscape : EnemyStateBase
     {
         Debug.Log("I need to run");
         Vector3 playerPos = Owner.Perception.EnemyView.PlayerLastPosition;
-        Owner.Perception.EnvironmentPerception.CheckHiddenPlaces(Owner.transform.position, playerPos, maxDot);
+        Owner.Perception.EnvironmentPerception.CheckHiddenPlaces(Owner.transform.position, playerPos, Owner.EnemyParameters.EscapeMaxDot);
 
         var hiddenWalls = Owner.Perception.EnvironmentPerception.HiddenWalls;
 
