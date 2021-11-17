@@ -123,17 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 507c49f24b299864d8e336000a616fd6, type: 2}
---- !u!114 &663793584 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6630170038418648098, guid: 5e04e5ba95daf284682e4629e06d3e5b, type: 3}
-  m_PrefabInstance: {fileID: 6959502865335065808}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 248f975053773d0429cb946021e2cef7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -321,6 +310,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13779450167b2fd4db657af4614953c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2008253781
+GameObject:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2008253783}
+  - component: {fileID: 2008253782}
+  m_Layer: 0
+  m_Name: Popcron.GizmosInstance
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2008253782
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2008253781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03c8294c5d6c4c142b5e23133a869be8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &2008253783
+Transform:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2008253781}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2827829969705630243
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -442,10 +474,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6630170038418648098, guid: 5e04e5ba95daf284682e4629e06d3e5b, type: 3}
-      propertyPath: MinDistance
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6959502866387284499, guid: 5e04e5ba95daf284682e4629e06d3e5b, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -498,14 +526,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
-    - target: {fileID: 8135251212427131670, guid: 5e04e5ba95daf284682e4629e06d3e5b, type: 3}
-      propertyPath: maxDot
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8135251212427131670, guid: 5e04e5ba95daf284682e4629e06d3e5b, type: 3}
-      propertyPath: RunOppositeDirection
-      value: 
-      objectReference: {fileID: 663793584}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e04e5ba95daf284682e4629e06d3e5b, type: 3}
 --- !u!1001 &8198955450875915275

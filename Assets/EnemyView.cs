@@ -43,21 +43,19 @@ public class EnemyView : MonoBehaviour
         {
             _seePlayer = false;
         }
-
+        DrawGizmos();
     }
 
    
-
-    private void OnDrawGizmos()
+    public void OnDrawGizmos()
     {
         //DRAW FIELD OF VIEW
-        Gizmos.color = Color.blue;
 
         Vector3 dir = transform.forward;
-        //Gizmos.DrawFrustum(transform.position, FieldOfView, ViewDistance, .01f, 1);
-        Gizmos.DrawLine(transform.position, transform.position + dir * _viewDistance);
 
-        Gizmos.color = Color.red;
+        UnityEngine.Gizmos.color = Color.blue;
+        UnityEngine.Gizmos.DrawLine(transform.position, transform.position + dir * _viewDistance);
+
 
         float angle = _fieldOfView / 2f * Mathf.Deg2Rad;
 
@@ -66,19 +64,57 @@ public class EnemyView : MonoBehaviour
             0, 
             dir.z * Mathf.Cos(angle) + dir.x * Mathf.Sin(angle));
         dir2.Normalize();
-        Gizmos.DrawLine(transform.position, transform.position + dir2 * _viewDistance);
+
+        UnityEngine.Gizmos.color = Color.red;
+        UnityEngine.Gizmos.DrawLine(transform.position, transform.position + dir2 * _viewDistance);
+
 
         Vector3 dir3 = new Vector3(
             dir.x * Mathf.Cos(-angle) - dir.z * Mathf.Sin(-angle),
             0,
             dir.z * Mathf.Cos(-angle) + dir.x * Mathf.Sin(-angle));
         dir3.Normalize();
-        Gizmos.DrawLine(transform.position, transform.position + dir3 * _viewDistance);
+
+        UnityEngine.Gizmos.DrawLine(transform.position, transform.position + dir3 * _viewDistance);
+
+   
+        UnityEngine.Gizmos.color = Color.green*Color.grey;
+        UnityEngine.Gizmos.DrawSphere(PlayerLastPosition, .1f);
+
+   }
+
+
+    public void DrawGizmos()
+    {
+        //DRAW FIELD OF VIEW
+
+        Vector3 dir = transform.forward;
+
+
+        Popcron.Gizmos.Line(transform.position, transform.position + dir * _viewDistance, Color.blue);
+
+        float angle = _fieldOfView / 2f * Mathf.Deg2Rad;
+
+        Vector3 dir2 = new Vector3(
+            dir.x * Mathf.Cos(angle) - dir.z * Mathf.Sin(angle),
+            0,
+            dir.z * Mathf.Cos(angle) + dir.x * Mathf.Sin(angle));
+        dir2.Normalize();
+
+
+        Popcron.Gizmos.Line(transform.position, transform.position + dir2 * _viewDistance, Color.red);
+
+
+        Vector3 dir3 = new Vector3(
+            dir.x * Mathf.Cos(-angle) - dir.z * Mathf.Sin(-angle),
+            0,
+            dir.z * Mathf.Cos(-angle) + dir.x * Mathf.Sin(-angle));
+        dir3.Normalize();
+
+
+        Popcron.Gizmos.Line(transform.position, transform.position + dir3 * _viewDistance, Color.red);
 
         //DRAW PLAYER LAST POSITION
-
-        Gizmos.color = Color.green*Color.grey;
-        Gizmos.DrawSphere(PlayerLastPosition, .1f);
+        Popcron.Gizmos.Sphere(PlayerLastPosition, .1f, Color.green * Color.grey);
     }
-
 }

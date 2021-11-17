@@ -31,13 +31,27 @@ public class HiddenPlacesChecker : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
+    private void Update()
     {
-        Gizmos.color = Color.yellow;
+        DrawGizmos();
+    }
+
+    public void DrawGizmos()
+    {
         foreach(var v in HiddenPositions)
         {
-            Gizmos.DrawSphere(v, .1f);
+            
+            Popcron.Gizmos.Sphere(v, .1f, Color.yellow, true, 160);
         }
     }
 
+    public void OnDrawGizmos()
+    {
+        UnityEngine.Gizmos.color = Color.yellow;
+
+        foreach (var v in HiddenPositions)
+        {
+            UnityEngine.Gizmos.DrawSphere(v, .1f);
+        }
+    }
 }

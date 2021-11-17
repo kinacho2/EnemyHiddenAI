@@ -58,12 +58,30 @@ public class RunToEndPoint : EnemyStateBase
 
     }
 
-    private void OnDrawGizmos()
+    public void OnDrawGizmos()
     {
         if(LastDecidedPosition.magnitude > 0)
         {
-            Gizmos.color = Color.green;
-            Gizmos.DrawSphere(LastDecidedPosition, .2f);
+
+            UnityEngine.Gizmos.color = Color.green;
+            UnityEngine.Gizmos.DrawSphere(LastDecidedPosition, .2f);
         }
     }
+
+    public void DrawGizmos()
+    {
+        if (LastDecidedPosition.magnitude > 0)
+        {
+
+            Popcron.Gizmos.Sphere(LastDecidedPosition, .2f, Color.green, true);
+        }
+    }
+
+
+
+    private void Update()
+    {
+        DrawGizmos();
+    }
+
 }
