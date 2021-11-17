@@ -11,7 +11,8 @@ public class PlayerDistanceDetector : MonoBehaviour
 
     public bool PlayerIsNear => _playerIsNear;
     public Vector3 PlayerLastPosition => _PlayerLastPosition;
-    private void Update()
+    
+    public void CheckDistance()
     {
         _playerIsNear = (Vector3.Distance(transform.position, PlayerContainer.Player.transform.position) <= MinDistance);
         if (_playerIsNear)

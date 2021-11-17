@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RunToOppositeDirection : MonoBehaviour
+public class RunToOppositeDirection : EnemyStateBase
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void CustomUpdate(float deltaTime)
     {
-        
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void OnEnter()
     {
-        
+        Debug.Log("Run Opposite");
+    }
+
+    public override void OnExit()
+    {
+
     }
 }

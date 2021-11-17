@@ -18,20 +18,22 @@ using UnityEngine;
 public class EnemyAI : MonoBehaviour
 {
     [SerializeField] EnemyPerception _EnemyPerception;
+    [SerializeField] NavMeshController _Controller;
 
-    [SerializeField] EnemyStateBase Current;
+    [SerializeField] EnemyStateBase CurrentState;
 
 
     public EnemyPerception Perception => _EnemyPerception;
-    
+    public NavMeshController Controller => _Controller;
+
 
     public void SetState(EnemyStateBase state)
     {
-        if(state!=null && state != Current)
+        if(state!=null && state != CurrentState)
         {
-            Current.OnExit();
-            Current = state;
-            Current.OnEnter();
+            CurrentState.OnExit();
+            CurrentState = state;
+            CurrentState.OnEnter();
         }
     }
 
@@ -39,8 +41,8 @@ public class EnemyAI : MonoBehaviour
     {
         //transform.Rotate(new Vector3(0, 45 * Time.deltaTime, 0), Space.Self);
 
-        if (Current)
-            Current.CustomUpdate(Time.deltaTime);
+        if (CurrentState)
+            CurrentState.CustomUpdate(Time.deltaTime);
 
     }
 

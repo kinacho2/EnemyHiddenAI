@@ -5,33 +5,35 @@ using System.Linq;
 
 public class EnvironmentPerception : MonoBehaviour
 {
-    [SerializeField] LayerMask EnvironmentLayer;
+    [SerializeField] public LayerMask EnvironmentLayer;
 
     [SerializeField] Wall[] AllWalls;
     [SerializeField] List<Wall> _PerceivedWalls;
+    [SerializeField] List<Wall> _HiddenWalls;
     [SerializeField] EnemyView EnemyView;
 
 
     public List<Wall> PerceivedWalls => _PerceivedWalls;
+    public List<Wall> HiddenWalls => _HiddenWalls;
 
     private void Start()
     {
         GetSurroundingWalls();
-        PerceiveEnviroment();
     }
 
     public void PerceiveEnviroment()
     {
         foreach(var w in AllWalls)
         {
-            if (!PerceivedWalls.Contains(w) && CanView(w))
+            if (!PerceivedWalls.Contains(w) && CanView(w, EnemyView.FieldOfView))
             {
                 PerceivedWalls.Add(w);
             }
         }
         foreach (var w in PerceivedWalls)
         {
-            w.Perceived(true);
+            if(!_HiddenWalls.Contains(w))
+                w.Perceived(true);
         }
     }
 
@@ -44,10 +46,10 @@ public class EnvironmentPerception : MonoBehaviour
 
     }
 
-    private bool CanView(Wall wall)
+    private bool CanView(Wall wall, float _fieldOfView)
     {
         Vector3 dir = EnemyView.transform.forward;
-        float _fieldOfView = EnemyView.FieldOfView;
+        //float _fieldOfView = EnemyView.FieldOfView;
         float _viewDistance = EnemyView.ViewDistance;
 
         float angle = _fieldOfView / 2f * Mathf.Deg2Rad;
@@ -76,5 +78,40 @@ public class EnvironmentPerception : MonoBehaviour
         || wall.Collider.bounds.IntersectRay(ray2);
     }
 
+    public List<Wall> GetFrontWalls()
+    {
+        List<Wall> walls = new List<Wall>();
+
+        foreach(var w in PerceivedWalls)
+        {
+            if (CanView(w, EnemyView.FieldOfView * 1.2f))
+            {
+                walls.Add(w);
+            }
+        }
+
+        return walls;
+    }
+
+    public void CheckHiddenPlaces(Vector3 enemyPos, Vector3 playerPos, float maxDot)
+    {
+        _HiddenWalls.Clear();
+
+        Vector3 playerDir = (playerPos - enemyPos).normalized;
+
+        foreach(var wall in PerceivedWalls)
+        {
+            Vector3 dir = (wall.transform.position - enemyPos).normalized;
+
+            //if (Vector3.Dot(playerDir, dir) < maxDot)
+                _HiddenWalls.Add(wall);
+        }
+        //test
+        foreach (var w in _HiddenWalls)
+        {
+            w.PossibleEscape(true);
+        }
+        //test
+    }
 
 }

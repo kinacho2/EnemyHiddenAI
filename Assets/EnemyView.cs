@@ -46,6 +46,7 @@ public class EnemyView : MonoBehaviour
 
     }
 
+   
 
     private void OnDrawGizmos()
     {

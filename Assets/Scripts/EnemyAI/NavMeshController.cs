@@ -10,6 +10,7 @@ public class NavMeshController : MonoBehaviour
 
     private NavMeshAgent agent;
     private NavMeshPath _tempPath;
+    public  bool Arrive => agent.remainingDistance < 0.2f;
 
     private void Awake()
     {

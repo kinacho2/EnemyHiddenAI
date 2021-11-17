@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -28,6 +29,15 @@ public class Player : MonoBehaviour
     {
         if(Direction.magnitude > .1f)
             Rigidbody.MovePosition(transform.position + Speed * Direction * Time.fixedDeltaTime);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        var enemy = collision.collider.GetComponent<EnemyAI>();
+        if (enemy)
+        {
+            SceneManager.LoadScene("Win");
+        }
     }
 
 }

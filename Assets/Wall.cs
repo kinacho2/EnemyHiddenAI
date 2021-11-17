@@ -8,6 +8,7 @@ public class Wall : MonoBehaviour
     [SerializeField] MeshRenderer Renderer;
     [SerializeField] Material DefaultMaterial;
     [SerializeField] Material PerceivedMaterial;
+    [SerializeField] Material EscapeMaterial;
 
     public Collider Collider => _Collider;
 
@@ -27,4 +28,12 @@ public class Wall : MonoBehaviour
             Renderer.material = DefaultMaterial;
     }
 
+
+    public void PossibleEscape(bool v)
+    {
+        if (v)
+            Renderer.material = EscapeMaterial;
+        else
+            Renderer.material = DefaultMaterial;
+    }
 }

@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 507c49f24b299864d8e336000a616fd6, type: 2}
+--- !u!114 &663793584 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6630170038418648098, guid: 5e04e5ba95daf284682e4629e06d3e5b, type: 3}
+  m_PrefabInstance: {fileID: 6959502865335065808}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 248f975053773d0429cb946021e2cef7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -483,6 +494,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 8135251212427131670, guid: 5e04e5ba95daf284682e4629e06d3e5b, type: 3}
+      propertyPath: maxDot
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8135251212427131670, guid: 5e04e5ba95daf284682e4629e06d3e5b, type: 3}
+      propertyPath: RunOppositeDirection
+      value: 
+      objectReference: {fileID: 663793584}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e04e5ba95daf284682e4629e06d3e5b, type: 3}
 --- !u!1001 &8198955450875915275

@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class LookAtPlayer : EnemyStateBase
 {
-    [SerializeField] EnemyStateBase DecideEscape;
+    [SerializeField] EnemyStateBase LookAround;
     [SerializeField] float TimeForLook = .3f;
+    [SerializeField] float Knockback = 1.5f;
     float timer = 0;
 
     Quaternion CurrentRot;
@@ -19,7 +20,9 @@ public class LookAtPlayer : EnemyStateBase
 
         if(timer >= TimeForLook)
         {
-            Owner.SetState(DecideEscape);
+            Owner.Controller.StopMovement();
+            Owner.SetState(LookAround);
+
         }
 
     }
@@ -29,6 +32,8 @@ public class LookAtPlayer : EnemyStateBase
         timer = 0;
         CurrentRot = Owner.transform.rotation;
         var playerDir = (Owner.Perception.PlayerDistanceDetector.PlayerLastPosition - Owner.transform.position).normalized;
+
+        Owner.Controller.StartMovement(Owner.transform.position - playerDir * Knockback);
 
         decidedRot = Quaternion.LookRotation(playerDir, Vector3.up);
     }
