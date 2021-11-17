@@ -10,8 +10,8 @@ public class NavMeshController : MonoBehaviour
 
     private NavMeshAgent agent;
     private NavMeshPath _tempPath;
-    public  bool Arrive => agent.remainingDistance < 0.2f;
-
+    public bool Arrive => agent.remainingDistance < 0.2f;
+    
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -52,5 +52,18 @@ public class NavMeshController : MonoBehaviour
         }
 
         return distance;
+    }
+
+    public Vector3 GetInitialDirectionToTarget(Vector3 position)
+    {
+        _tempPath = new NavMeshPath();
+                
+        if (agent.CalculatePath(position, _tempPath))
+        {
+            return (_tempPath.corners[1] - _tempPath.corners[0]).normalized;
+        }
+
+        Debug.LogError($"No path found for position {position}");
+        return Vector3.zero;
     }
 }
