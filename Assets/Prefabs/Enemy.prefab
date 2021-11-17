@@ -88,7 +88,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NextState: {fileID: 3089832955902753453}
-  MinDistance: 1
+  MinDistance: 0
 --- !u!1 &3159620648877198673
 GameObject:
   m_ObjectHideFlags: 0
@@ -333,8 +333,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FindHiddenPlaces: {fileID: 6630170038418648098}
-  RunOppositeDirection: {fileID: 4208552255976470029}
-  maxDot: 0.4
+  RunOppositeDirection: {fileID: 6630170038418648098}
+  maxDot: 0.6
 --- !u!1 &6959502865812198031
 GameObject:
   m_ObjectHideFlags: 0
