@@ -912,8 +912,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LookBehind: {fileID: 4530903168522189650}
-  RunToEndPoint: {fileID: 0}
+  RunToEndPoint: {fileID: 3089832955902753453}
   maxDistance: 5
+  minDistance: 2
   WallsLayer:
     serializedVersion: 2
     m_Bits: 1024
