@@ -22,7 +22,7 @@ public class EnemyPerception : MonoBehaviour
         StartCoroutine(PerceiveWallsCoroutine());
     }
 
-    private void Update()
+    public void CustomUpdate()
     {
         _EnvironmentPerception.PerceiveEnviroment();
         _PlayerDistanceDetector.CheckDistance();

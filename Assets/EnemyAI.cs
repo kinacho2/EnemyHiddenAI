@@ -41,7 +41,7 @@ public class EnemyAI : MonoBehaviour
     private void Update()
     {
         //transform.Rotate(new Vector3(0, 45 * Time.deltaTime, 0), Space.Self);
-
+        Perception.CustomUpdate();
         if (CurrentState)
             CurrentState.CustomUpdate(Time.deltaTime);
 

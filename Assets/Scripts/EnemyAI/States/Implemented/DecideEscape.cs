@@ -14,7 +14,6 @@ public class DecideEscape : EnemyStateBase
 
     public override void OnEnter()
     {
-        Debug.Log("I need to run");
         Vector3 playerPos = Owner.Perception.EnemyView.PlayerLastPosition;
         Owner.Perception.EnvironmentPerception.CheckHiddenPlaces(Owner.transform.position, playerPos, Owner.EnemyParameters.EscapeMaxDot);
 

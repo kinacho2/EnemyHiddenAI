@@ -548,9 +548,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MinDistance: 2
+  EnemyView: {fileID: 6959502865812198065}
   PlayerContainer: {fileID: 6959502866387284503}
   _PlayerLastPosition: {x: 0, y: 0, z: 0}
   _playerIsNear: 0
+  _earSomethingTooNear: 0
 --- !u!1 &6959502866325791399
 GameObject:
   m_ObjectHideFlags: 0

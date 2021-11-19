@@ -9,7 +9,7 @@ public class EnemyView : MonoBehaviour
     [SerializeField] PlayerContainer PlayerContainer;
     [SerializeField] bool _seePlayer;
 
-    public Vector3 PlayerLastPosition { get; protected set; }
+    public Vector3 PlayerLastPosition { get; set; }
     public float ViewDistance => _viewDistance;
     public float FieldOfView => _fieldOfView;
     

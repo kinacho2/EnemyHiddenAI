@@ -8,10 +8,17 @@ public class LookAround : EnemyStateBase
     [SerializeField] EnemyStateBase DecideEscape;
 
     [SerializeField] float AngleSpeed = 20;
-    
+
+    bool tooNear = false;
+
     public override void OnEnter()
     {
-
+        if (tooNear)
+        {
+            Debug.Log("There is something too near");
+            tooNear = false;
+            Owner.SetState(DecideEscape);
+        }
     }
 
     public override void OnExit()
@@ -30,8 +37,10 @@ public class LookAround : EnemyStateBase
         }
         else if (Owner.Perception.PlayerDistanceDetector.PlayerIsNear)
         {
+            tooNear = Owner.Perception.PlayerDistanceDetector.EarSomethingTooNear;
             Owner.SetState(LookAtPlayer);
         }
+        
 
     }
 }
